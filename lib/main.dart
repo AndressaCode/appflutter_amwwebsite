@@ -34,11 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: Color(0xFF1B2B50),
         title: Text('AMW - Tecnologies',style: TextStyle(color: Colors.white,fontSize: 22.0)),
         centerTitle: true,
-      ),
+      ),*/
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -53,9 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       // aqui vai ser a logo
                       Container(
-                        width: 50.00,
-                        height: 50.00,
-                        color: Colors.pink,
+                        child: Image.asset('images/amwlogo.png'),
+                        //width: 50.00,
+                        height: 100.00,
+                        //color: Colors.white,
                       ),
                     ],
                   ),
@@ -66,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Container(
                         width: 50.00,
                         height: 50.00,
-                        color: Colors.white,
+                        //color: Colors.white,
                         child: IconButton(
                           onPressed: () {},
                           color: Color(0xFF1B2B50),
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         // facebook icon
                         width: 50.00,
                         height: 50.00,
-                        color: Colors.white,
+                        //color: Colors.white,
                         child: IconButton(
                           onPressed: (){},
                           color: Color(0xFF1B2B50),
@@ -90,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         // whatsapp icon
                         width: 50.00,
                         height: 50.00,
-                        color: Colors.white,
+                        //color: Colors.white,
                         child: IconButton(
                           onPressed: (){},
                           color: Color(0xFF1B2B50),
@@ -103,26 +104,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            //SizedBox(height: 20.0),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                color: Colors.pink ,
-                //width: 640.00,
-                height: 600.0,
+                child: Image.asset('images/fotoprincipal.png', fit: BoxFit.cover),
+                height: 1000.0,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text("Aqui va ser a logo", style: TextStyle(color: Colors.white, fontSize: 16.0, backgroundColor: Colors.green),),
-                  Text("Todos os direitos reseravdos", style: TextStyle(color: Colors.white, fontSize: 16.0,backgroundColor: Colors.green),),
-                  Text("+55 84 996970 7753", style: TextStyle(color: Colors.white, fontSize: 16.0,backgroundColor: Colors.green),),
-                ],
+              child: Container(
+                color: Color(0xFF1B2B50),
+                height: 100.0,
               ),
-            ),
+                 // Text("Aqui va ser a logo", style: TextStyle(color: Colors.white, fontSize: 16.0, ),),
+                  //Text("Todos os direitos reseravdos", style: TextStyle(color: Colors.white, fontSize: 16.0,),),
+                  //Text("+55 84 996970 7753", style: TextStyle(color: Colors.white, fontSize: 16.0,),),
+              ),
           ],
         ),
       ),
