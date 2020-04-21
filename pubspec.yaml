@@ -14,7 +14,7 @@ description: Site for the AMW Company
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -43,10 +43,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - images/Logo1amw.jpg
    - images/amwlogo.png
-   - images/pexels-photo-3784335.jpeg
-   - images/fotoprincipal.png
+   - images/amw-principal.png
+   - images/menu.png
+   - images/amwpng.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

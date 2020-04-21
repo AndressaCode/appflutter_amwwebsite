@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'widgets/navbar.dart';
+import 'utils/responsiveLayout.dart';
 
-void main(){
+void main() {
   runApp(new MyApp());
 }
 
@@ -19,8 +22,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class MyHomePage extends StatefulWidget {
 
+class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -30,100 +33,153 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*appBar: AppBar(
-        backgroundColor: Color(0xFF1B2B50),
-        title: Text('AMW - Tecnologies',style: TextStyle(color: Colors.white,fontSize: 22.0)),
-        centerTitle: true,
-      ),*/
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Stack(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      // aqui vai ser a logo
-                      Container(
-                        child: Image.asset('images/amwlogo.png'),
-                        //width: 50.00,
-                        height: 100.00,
-                        //color: Colors.white,
-                      ),
-                    ],
+            Container(
+              height: 150.0,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF173B45),
+                      Color(0xFF225667)
+                    ]
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      // instagram icon
-                      Container(
-                        width: 50.00,
-                        height: 50.00,
-                        //color: Colors.white,
-                        child: IconButton(
-                          onPressed: () {},
-                          color: Color(0xFF1B2B50),
-                          icon: Icon(FontAwesomeIcons.instagram),
-                          iconSize: 36.0,
-                        ),
-                      ),
-                      Container(
-                        // facebook icon
-                        width: 50.00,
-                        height: 50.00,
-                        //color: Colors.white,
-                        child: IconButton(
-                          onPressed: (){},
-                          color: Color(0xFF1B2B50),
-                          icon: Icon(FontAwesomeIcons.facebook),
-                          iconSize: 34.0,
-                        ),
-                      ),
-                      Container(
-                        // whatsapp icon
-                        width: 50.00,
-                        height: 50.00,
-                        //color: Colors.white,
-                        child: IconButton(
-                          onPressed: (){},
-                          color: Color(0xFF1B2B50),
-                          icon: Icon(FontAwesomeIcons.whatsapp),
-                          iconSize: 36.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                child: Image.asset('images/fotoprincipal.png', fit: BoxFit.cover),
-                height: 1000.0,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: Color(0xFF1B2B50),
-                height: 100.0,
-              ),
-                 // Text("Aqui va ser a logo", style: TextStyle(color: Colors.white, fontSize: 16.0, ),),
-                  //Text("Todos os direitos reseravdos", style: TextStyle(color: Colors.white, fontSize: 16.0,),),
-                  //Text("+55 84 996970 7753", style: TextStyle(color: Colors.white, fontSize: 16.0,),),
-              ),
+                ),
+                child: NavBar()),
+            SizedBox(height: 100.0),
+            Body(),
           ],
         ),
       ),
     );
   }
 }
+
+class Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveLayout(
+      largeScreen: LargeChild(),
+      smallScreen: SmallChild(),
+    );
+  }
+}
+
+class LargeChild extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 600,
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          FractionallySizedBox(
+            alignment: Alignment.centerRight,
+            widthFactor: .6,
+            child: Image.network("images/amw-principal.png", scale: .85),
+          ),
+          FractionallySizedBox(
+            alignment: Alignment.centerLeft,
+            widthFactor: .6,
+            child: Padding(
+              padding: EdgeInsets.only(left: 48),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Olá!",
+                      style: TextStyle(
+                          fontSize: 60,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Montserrat-Regular",
+                          color: Color(0xFF8591B0))),
+                  RichText(
+                    text: TextSpan(
+                        text: "Bem vindos a ",
+                        style:
+                            TextStyle(fontSize: 60, color: Color(0xFF8591B0)),
+                        children: [
+                          TextSpan(
+                              text: "AMW",
+                              style: TextStyle(
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87))
+                        ]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0, top: 20),
+                    child: Text(
+                      "Desenvolvendo soluções para o seu negócio",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                  SizedBox(height: 40,),
+
+                  //Search()
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class SmallChild extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("Olá!",
+                style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Montserrat-Regular",
+                    color: Color(0xFF8591B0))),
+            RichText(
+              text: TextSpan(
+                  text: "Bem vindos a ",
+                  style: TextStyle(fontSize: 60, color: Color(0xFF8591B0)),
+                  children: [
+                    TextSpan(
+                        text: "AMW",
+                        style: TextStyle(
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87))
+                  ]),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0, top: 20),
+              child: Text("Desenvolvendo soluções para o seu negócio"),
+            ),
+            SizedBox(height: 30,),
+            Center(
+              child: Image.network(
+                "images/amw-principal.png",
+                scale: 1,
+              ),
+            ),
+            SizedBox(height: 32,),
+            //Search(),
+            SizedBox(height: 30,),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
